@@ -48,9 +48,9 @@ const createConnection = async () => {
 // ---------- PARÂMETROS DO CLIENT DO WHATSAPP ---------------- //
 const client = new Client({
   authStrategy: new LocalAuth({ clientId: idClient }),
-  puppeteer: {headless: true,
+  puppeteer: {
   // CAMINHO DO CHROME PARA WINDOWS (REMOVER O COMENTÁRIO ABAIXO)
-  executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+  //executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
   //===================================================================================
   // CAMINHO DO CHROME PARA MAC (REMOVER O COMENTÁRIO ABAIXO)
   //executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
@@ -58,12 +58,7 @@ const client = new Client({
   // CAMINHO DO CHROME PARA LINUX (REMOVER O COMENTÁRIO ABAIXO)
   //executablePath: '/usr/bin/google-chrome-stable',
   //===================================================================================
-  },
-  webVersionCache: {
-    type: 'remote',
-    remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2407.1.html '
-    },
-    args: [
+	args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
@@ -73,7 +68,14 @@ const client = new Client({
       '--single-process', // <- this one doesn't works in Windows
       '--disable-gpu'
     ]
+  },
+   webVersionCache: {
+                type: 'remote',
+                remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2407.3.html',
+            },
+    
 });
+
 
 // INITIALIZE DO CLIENT DO WPP
 client.initialize();
